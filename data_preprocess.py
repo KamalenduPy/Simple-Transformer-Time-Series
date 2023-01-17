@@ -1,5 +1,5 @@
 
-"""### Process and save Bejing Data"""
+"""### Process and save the data in data folder as csv format"""
 
 import pandas as pd
 
@@ -61,64 +61,3 @@ processed_data.head()
 [processed_data[col].isnull().sum() for col in processed_data.columns ]
 
 processed_data['timestamp'].describe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""## Test the model"""
-
-test_data = data[-(round(len(data)*test_size)):]
-test_data.shape
-test_indices = utils.get_indices_entire_sequence(
-    data=test_data,
-    window_size=window_size,
-    step_size=step_size)
-
-# Making instance of custom dataset class
-test_data = ds.TransformerDataset(
-    data=torch.tensor(test_data[input_variables].values).float(),
-    indices=test_indices,
-    enc_seq_len=enc_seq_len,
-    dec_seq_len=dec_seq_len,
-    target_seq_len=output_sequence_length
-    )
-
-test_dl = DataLoader(test_data, batch_size)
-
-for i in range(1):
-    a,batch=next(enumerate(test_dl))
-    a,b,c=batch
-    print(a.shape,b.shape,c.shape)
-
-# evaluate the model
-loss=[]
-def evaluate_model(test_dl, model):
-    predictions, actuals = list(), list()
-    for i, (src, trg, trg_y) in enumerate(test_dl):
-        print(src.shape,trg.shape,trg_y.shape)
-        # evaluate the model on the test set
-        batch_first = False
-        src = src.permute(1, 0, 2)
-        trg = trg.permute(1, 0, 2)
-        trg_y = trg_y.permute(1, 0)
-        
-        yhat = model(src=src,tgt=trg,src_mask=src_mask,tgt_mask=tgt_mask)
-        yhat=yhat[:,:,-1]
-        print(trg_y.shape,yhat.shape)
-
-        criterion=nn.MSELoss()
-        l1= criterion(yhat,trg_y)
-        loss.append(l1)
-
-trg_y,yhat=evaluate_model(test_dl, model)
