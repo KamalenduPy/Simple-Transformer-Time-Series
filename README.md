@@ -11,3 +11,6 @@ The sandbox.py file shows how to use the Transformer to make a training predicti
 
 The inference.py file contains the function that takes care of inference, and the inference_example.py file shows a pseudo-ish code example of how to use the function during model validation and testing. 
 
+Ref:
+# !git clone https://github.com/KasperGroesLudvigsen/influenza_transformer.git
+https://towardsdatascience.com/how-to-make-a-pytorch-transformer-for-time-series-forecasting-69e073d4061e
