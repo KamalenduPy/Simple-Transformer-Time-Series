@@ -7,7 +7,8 @@ The first article explains step by step how to code the Transformer model used i
 
 The second article explains how to use the time series Transformer at inference time where you don't know the decoder input values.
 
-The sandbox.py file shows how to use the Transformer to make a training prediction on the data from the .csv file in "/data".
+Bejing data has been preprocessed and saved in "/data" folder that has been used to train.
+The train.py file shows how to use the Transformer to make a training prediction on the data from the .csv file in "/data".
 
 The inference.py file contains the function that takes care of inference, and the inference_example.py file shows a pseudo-ish code example of how to use the function during model validation and testing. 
 
