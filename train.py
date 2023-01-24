@@ -66,22 +66,21 @@ training_data = ds.TransformerDataset(
     target_seq_len=output_sequence_length
     )
 
-# checks
+### pytorch data object checks
 src, trg, trg_y= training_data.__getitem__(index=1)
 src.shape,trg.shape,trg_y.shape
 
-print('src:',src)
-print('tgt:',trg)
-print('trg_y:',trg_y)
+# print('src:',src)
+# print('tgt:',trg)
+# print('trg_y:',trg_y)
 
 # Making dataloader
 training_data = DataLoader(training_data, batch_size)
 
-i, batch = next(enumerate(training_data))
-
-src, trg, trg_y = batch
-
-src.shape,trg.shape,trg_y.shape
+## Dataloader check
+# i, batch = next(enumerate(training_data))
+# src, trg, trg_y = batch
+# src.shape,trg.shape,trg_y.shape
 
 import torch.nn as nn
 model = tst.TimeSeriesTransformer(
@@ -144,7 +143,6 @@ for i, batch in enumerate(training_data):
     # Adjust learning weights
     optimizer.step()
 
-output
 
 
 PATH='~/model.pt'
