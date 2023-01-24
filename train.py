@@ -21,7 +21,7 @@ n_heads = 1
 n_decoder_layers = 2
 n_encoder_layers = 2
 
-# dec_seq_len = 20 # length of input given to decoder  # it is not used anywhere.. It has to be samewith target(trg not trg_y) dim
+dec_seq_len = 20 # length of input given to decoder  # it is not used anywhere.. It has to be samewith target(trg not trg_y) dim
 
 enc_seq_len = 48 # length of input given to encoder # only required to create data: src,tgt,tgt_y
 
