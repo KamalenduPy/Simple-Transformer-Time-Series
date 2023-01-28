@@ -74,7 +74,7 @@ data = utils.read_data(timestamp_col_name=timestamp_col)
 """## Test the model"""
 
 
-PATH='.~/model.pt'
+PATH='~/model.pt'
 
 model=torch.load(PATH)
 
